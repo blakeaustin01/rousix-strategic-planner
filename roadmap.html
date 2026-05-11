@@ -20,7 +20,7 @@
         </span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="planner.html">Start Planning</a>
         <a href="roadmap.html">View Roadmap</a>
         <a href="get-started.html">Get Started</a>
@@ -32,10 +32,12 @@
     <section class="page-hero">
       <div class="shell">
         <p class="eyebrow">Roadmap</p>
+
         <h1>Understand your plan.</h1>
+
         <p>
-          This page explains the plan in simple steps. If you have not entered
-          your own numbers yet, this page will show a sample roadmap.
+          This page explains the saved plan in simple steps. If you have not
+          entered your own numbers yet, it shows a sample home roadmap.
         </p>
       </div>
     </section>
@@ -44,24 +46,27 @@
       <div class="shell roadmap-layout">
         <aside class="summary-sidebar">
           <p class="eyebrow">Your plan</p>
+
           <h2 id="roadmapTitle">Sample roadmap</h2>
-          <p id="roadmapSummary">
-            Your saved plan will appear here.
-          </p>
+
+          <p id="roadmapSummary">Your saved plan will appear here.</p>
 
           <div class="mini-metrics">
             <div>
               <span>Price</span>
               <strong id="sidePrice">$0</strong>
             </div>
+
             <div>
-              <span>Direct total</span>
+              <span>Total contributions</span>
               <strong id="sideDirect">$0</strong>
             </div>
+
             <div>
-              <span>Gap</span>
-              <strong id="sideGap">$0</strong>
+              <span>Plan base after infrastructure</span>
+              <strong id="sidePlanBase">$0</strong>
             </div>
+
             <div>
               <span>Tier</span>
               <strong id="sideTier">Standard</strong>
@@ -78,9 +83,7 @@
             <article class="stage-card">
               <span class="stage-number">1</span>
               <h2>Start Planning</h2>
-              <p id="stageOneText">
-                Choose the goal and enter the price.
-              </p>
+              <p id="stageOneText">Choose the goal and enter the price.</p>
             </article>
 
             <article class="stage-card">
@@ -93,18 +96,16 @@
 
             <article class="stage-card">
               <span class="stage-number">3</span>
-              <h2>Understand the Gap</h2>
+              <h2>Handle Infrastructure</h2>
               <p id="stageThreeText">
-                See what remains after direct contributions.
+                The suggested infrastructure cost is handled before plan-base math.
               </p>
             </article>
 
             <article class="stage-card">
               <span class="stage-number">4</span>
-              <h2>Compare Options</h2>
-              <p id="stageFourText">
-                Change the timeline, amount, goal, or infrastructure tier.
-              </p>
+              <h2>Understand the Gap</h2>
+              <p id="stageFourText">See what remains after direct contributions.</p>
             </article>
 
             <article class="stage-card">
@@ -119,26 +120,24 @@
 
           <div class="explanation-panel">
             <p class="eyebrow">A clearer explanation</p>
+
             <h2>How surplus-based planning works in this prototype</h2>
 
             <div id="laymanExplanation" class="layman-text"></div>
+          </div>
 
-            <div class="network-note">
-              <h3>Network effect concept</h3>
-              <p>
-                A system like this becomes more useful when more people
-                participate and more infrastructure enters the network. If only a
-                few people contribute very small amounts, the system has limited
-                room to move. If participation grows, the network may have more
-                utility, more scale, and more planning flexibility.
-              </p>
+          <div class="explanation-panel">
+            <p class="eyebrow">Compare options</p>
 
-              <p>
-                This is still not a promise. It simply explains the idea: more
-                participation and more infrastructure can create more possible
-                paths than a small isolated plan.
-              </p>
-            </div>
+            <h2>Different ways to shape the path</h2>
+
+            <p>
+              Each card changes one part of the plan so the person can see the
+              effect. This is the beginning of the automated formula-style back
+              end, but it runs here in the browser.
+            </p>
+
+            <div id="roadmapCompareGrid" class="compare-grid"></div>
 
             <div class="button-row">
               <button type="button" id="printRoadmap" class="button button-secondary">
