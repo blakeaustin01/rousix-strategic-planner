@@ -1,42 +1,28 @@
-# Rousix Goal Pathway Planner
+# Rousix Surplus Ownership Planner
 
-This is a static GitHub Pages prototype for a Rousix planning tool.
+A static GitHub Pages prototype that explains surplus-based planning in simple language.
 
-## What it does
+## Pages
 
-A visitor enters:
+- `index.html` — landing page
+- `planner.html` — interactive planner
+- `roadmap.html` — plain-English roadmap explanation
+- `get-started.html` — activation and onboarding concept
+- `styles.css` — design
+- `app.js` — calculations and local browser storage
 
-- Goal type
-- Goal name
-- Price
-- Starting contribution
-- Monthly contribution
-- Planning timeline
-- Illustration model
-- Infrastructure tier
+## Notes
 
-The planner shows:
+This is a prototype only.
 
-- Direct-capital target
-- Suggested starting point
-- Suggested monthly path
-- Infrastructure suggestion
-- Infrastructure cost handling
-- Remaining goal-path gap
-- Plain-English summary
-- Compare options
-- Top-to-bottom roadmap
-- Copy summary
-- Print roadmap
-- Hosted payment link button placeholder
+The payment section is not connected to a real payment processor. A live version should use a secure checkout link from a payment provider.
 
-## Payment handling
+Do not collect credit card information directly on GitHub Pages.
 
-This static site does not collect card data.
+## Disclaimer
 
-For a live version, use a secure hosted checkout tool such as Stripe Payment Links or Stripe Checkout.
+This prototype does not provide financial, investment, tax, legal, credit, lending, mining, staking, or accounting advice.
 
-The `app.js` file contains this placeholder:
+It does not guarantee profit, returns, appreciation, liquidity, financing approval, payment approval, asset purchase, or ownership.
 
-```javascript
-const STRIPE_START_LINK = "https://buy.stripe.com/REPLACE_WITH_YOUR_1_DOLLAR_VERIFICATION_LINK";
+Hypothetical 5x, 10x, 15x, and 40x examples are scenario examples only. They are not promises, forecasts, guarantees, or expected outcomes.
