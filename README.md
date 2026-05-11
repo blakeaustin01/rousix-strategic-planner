@@ -1,24 +1,38 @@
 # Rousix Surplus Ownership Planner
 
-A static multi-page planning tool for GitHub Pages.
+A static multi-page planning tool for explaining a surplus-based ownership pathway.
 
 ## Pages
 
 - `index.html` — landing page
 - `planner.html` — interactive planner and compare options
-- `roadmap.html` — roadmap explanation
-- `get-started.html` — activation and onboarding page
-- `styles.css` — design
-- `app.js` — planner logic
+- `roadmap.html` — simple roadmap explanation
+- `get-started.html` — activation and onboarding flow
+- `styles.css` — visual design
+- `app.js` — calculations and page behavior
 
-## Notes
+## Planner logic
 
-The public pages are written for potential Rousix members, not for developers.
+The planner uses:
 
-To connect the activation button, add a hosted checkout link to the `CHECKOUT_URL` value in `app.js`.
+- Goal Type
+- Goal Name
+- Price
+- Starting Contribution
+- Monthly Contribution
+- Planning Timeline
 
-## Disclaimer
+The planner calculates:
 
-The planner does not guarantee profit, returns, appreciation, liquidity, financing approval, payment approval, asset purchase, or ownership.
+- Total contributions
+- Suggested infrastructure path
+- Infrastructure amount
+- Plan base after infrastructure
+- 5x scenario base
+- 5x planning gap
+- Suggested full-goal starting point
+- Compare options
 
-5x, 10x, 15x, and 40x examples are scenario examples only.
+## Clear expectations
+
+The planner shows educational scenarios. It does not promise profit, returns, appreciation, liquidity, financing approval, payment approval, asset purchase, or ownership.
