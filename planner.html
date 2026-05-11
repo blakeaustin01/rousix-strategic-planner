@@ -12,7 +12,7 @@
 <body>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="index.html" aria-label="Rousix Planner Home">
+      <a class="brand" href="index.html">
         <span class="brand-mark">R</span>
         <span class="brand-text">
           <strong>Rousix</strong>
@@ -36,14 +36,14 @@
         <h1>Build your sample roadmap.</h1>
 
         <p>
-          Enter your goal, price, starting contribution, monthly contribution,
-          and timeline. The planner updates automatically as you change the numbers.
+          Enter a goal, price, starting contribution, monthly contribution, and
+          timeline. The planner updates instantly as the numbers change.
         </p>
 
         <div class="important-card">
-          <strong>Important:</strong>
-          5x, 10x, 15x, and 40x examples are planning scenarios only. They are not
-          promises, forecasts, guarantees, or expected results.
+          <strong>Clear expectations:</strong>
+          The 5x, 10x, 15x, and 40x examples are hypothetical planning examples.
+          They are not promises, forecasts, guarantees, or expected results.
         </div>
       </div>
     </section>
@@ -122,7 +122,7 @@
                 />
               </div>
               <small id="startingHelp" class="field-help">
-                Minimum: $5.
+                Absolute minimum: $5.
               </small>
             </label>
 
@@ -139,7 +139,7 @@
                 />
               </div>
               <small id="monthlyHelp" class="field-help">
-                Minimum: $1.
+                Absolute minimum: $1.
               </small>
             </label>
           </div>
@@ -154,11 +154,13 @@
           </label>
 
           <div class="minimum-box">
-            <h3>Start small or plan for the full goal</h3>
+            <h3>Start small or plan the full goal</h3>
             <p>
               The minimum starting contribution is $5 and the minimum monthly
-              contribution is $1. For larger goals, the planner also shows a
-              suggested full-goal starting point based on the price.
+              contribution is $1. The planner also shows a suggested full-goal
+              starting point based on the price. This lets you test the process
+              at a small level without confusing a starter path with a full-goal
+              path.
             </p>
           </div>
 
@@ -187,21 +189,21 @@
             </article>
 
             <article class="metric-card">
-              <span>Infrastructure Cost Shown</span>
+              <span>Infrastructure Cost</span>
               <strong id="infrastructureCost">$0</strong>
-              <small>The suggested tier is handled first in this sample path.</small>
+              <small>The suggested infrastructure amount is handled first.</small>
             </article>
 
             <article class="metric-card">
               <span>Plan Base After Infrastructure</span>
               <strong id="planBaseAfterInfrastructure">$0</strong>
-              <small>What remains after the shown infrastructure amount.</small>
+              <small>What remains after the infrastructure amount is accounted for.</small>
             </article>
 
             <article class="metric-card">
               <span>5x Plan-Base Gap</span>
               <strong id="fiveXGap">$0</strong>
-              <small>The amount still short of the 5x planning base.</small>
+              <small>The amount still needed for the 5x example.</small>
             </article>
 
             <article class="metric-card">
@@ -219,7 +221,7 @@
             <article class="metric-card">
               <span>Suggested Full-Goal Start</span>
               <strong id="goalMinimum">$0</strong>
-              <small>A simple price-based starting point.</small>
+              <small>Price divided by 60, rounded up.</small>
             </article>
           </div>
 
@@ -246,7 +248,7 @@
           </div>
 
           <div class="scenario-panel">
-            <h3>How the math works</h3>
+            <h3>Simple formula</h3>
             <p id="formulaNote"></p>
           </div>
 
@@ -257,7 +259,7 @@
 
             <p class="muted-copy">
               These cards show how the plan changes when the starting amount,
-              monthly amount, timeline, or goal size changes.
+              monthly amount, price, or timeline changes.
             </p>
 
             <div id="compareGrid" class="compare-grid"></div>
