@@ -232,8 +232,7 @@ h3 {
   transition:
     transform 160ms ease,
     background 160ms ease,
-    border-color 160ms ease,
-    opacity 160ms ease;
+    border-color 160ms ease;
 }
 
 .button:hover,
@@ -251,11 +250,6 @@ h3 {
   color: var(--text);
   background: rgba(255, 255, 255, 0.08);
   border-color: var(--line);
-}
-
-.button-disabled {
-  opacity: 0.75;
-  pointer-events: none;
 }
 
 .full-button {
