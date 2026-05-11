@@ -20,7 +20,7 @@
         </span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="planner.html">Start Planning</a>
         <a href="roadmap.html">View Roadmap</a>
         <a href="get-started.html">Get Started</a>
@@ -32,18 +32,19 @@
     <section class="page-hero">
       <div class="shell">
         <p class="eyebrow">Start planning</p>
+
         <h1>Build your sample roadmap.</h1>
+
         <p>
           Enter a goal, price, starting contribution, monthly contribution, and
-          timeline. The planner will show a simple pathway and save it to your
-          browser so you can view the roadmap on the next page.
+          timeline. The planner updates instantly as you change the variables.
         </p>
 
         <div class="important-card">
           <strong>Important:</strong>
-          This is not a quote, contract, investment projection, or approval.
-          The 5x and 10x numbers shown below are hypothetical planning examples
-          only.
+          The 5x, 10x, 15x, and 40x language in this prototype is hypothetical
+          scenario language only. It is not a return promise, forecast,
+          guarantee, or expected result.
         </div>
       </div>
     </section>
@@ -56,7 +57,7 @@
             <p>Use a sample goal or enter your own numbers.</p>
           </div>
 
-          <div class="sample-row">
+          <div class="sample-row" aria-label="Sample goal buttons">
             <button type="button" class="sample-button" data-sample="vehicle">
               Vehicle
             </button>
@@ -117,10 +118,13 @@
                   id="startingContribution"
                   type="number"
                   min="5"
-                  step="100"
-                  value="5000"
+                  step="25"
+                  value="1000"
                 />
               </div>
+              <small id="startingHelp" class="field-help">
+                Absolute minimum: $5.
+              </small>
             </label>
 
             <label class="field">
@@ -132,9 +136,12 @@
                   type="number"
                   min="1"
                   step="25"
-                  value="500"
+                  value="350"
                 />
               </div>
+              <small id="monthlyHelp" class="field-help">
+                Absolute minimum: $1.
+              </small>
             </label>
           </div>
 
@@ -148,12 +155,12 @@
           </label>
 
           <div class="minimum-box">
-            <h3>Minimums</h3>
+            <h3>Minimums and realistic starting point</h3>
             <p>
-              The prototype uses a minimum starting contribution of $5 and a
-              minimum monthly contribution of $1. A real payment setup could
-              begin with a $1 activation charge to collect a payment method
-              through a secure checkout provider.
+              The absolute prototype minimums are $5 to start and $1 per month.
+              The planner also shows a suggested full-goal starting point based
+              on the price. That lets someone start small without pretending a
+              small test amount is automatically enough for a large goal.
             </p>
           </div>
 
@@ -169,34 +176,52 @@
 
         <section class="results-card" aria-live="polite">
           <p class="eyebrow">Sample result</p>
+
           <h2 id="resultTitle">Family vehicle pathway</h2>
-          <p id="simpleSummary">
-            Your plan will appear here.
-          </p>
+
+          <p id="simpleSummary">Your plan will appear here.</p>
 
           <div class="metric-grid">
             <article class="metric-card">
-              <span>Direct Contribution Total</span>
+              <span>Total Contributions</span>
               <strong id="directContribution">$0</strong>
-              <small>Starting contribution plus all monthly contributions.</small>
+              <small>Starting contribution plus monthly contributions.</small>
             </article>
 
             <article class="metric-card">
-              <span>Remaining Gap</span>
-              <strong id="remainingGap">$0</strong>
-              <small>What is still missing if only direct contributions are used.</small>
+              <span>Infrastructure Cost Shown</span>
+              <strong id="infrastructureCost">$0</strong>
+              <small>The suggested tier is handled before plan-base math.</small>
+            </article>
+
+            <article class="metric-card">
+              <span>Plan Base After Infrastructure</span>
+              <strong id="planBaseAfterInfrastructure">$0</strong>
+              <small>What remains for the hypothetical plan base.</small>
+            </article>
+
+            <article class="metric-card">
+              <span>5x Plan-Base Gap</span>
+              <strong id="fiveXGap">$0</strong>
+              <small>The amount still short of the 5x plan base.</small>
             </article>
 
             <article class="metric-card">
               <span>5x Scenario Base</span>
               <strong id="fiveXBase">$0</strong>
-              <small>Example plan base needed for a hypothetical 5x scenario.</small>
+              <small>Price divided by 5.</small>
             </article>
 
             <article class="metric-card">
               <span>Suggested Infrastructure</span>
               <strong id="suggestedTier">Standard</strong>
               <small id="tierReason">Based on price and plan base.</small>
+            </article>
+
+            <article class="metric-card">
+              <span>Suggested Full-Goal Start</span>
+              <strong id="goalMinimum">$0</strong>
+              <small>Price divided by 60, rounded up.</small>
             </article>
           </div>
 
@@ -215,6 +240,29 @@
               <h3>10x example</h3>
               <p id="tenXText"></p>
             </article>
+          </div>
+
+          <div class="scenario-panel">
+            <h3>Starter status</h3>
+            <p id="starterStatus"></p>
+          </div>
+
+          <div class="scenario-panel">
+            <h3>Formula note</h3>
+            <p id="formulaNote"></p>
+          </div>
+
+          <div class="compare-section-inline">
+            <p class="eyebrow">Compare options</p>
+
+            <h2>Change the path without guessing.</h2>
+
+            <p class="muted-copy">
+              These cards update automatically when you change the price,
+              timeline, starting amount, or monthly amount.
+            </p>
+
+            <div id="compareGrid" class="compare-grid"></div>
           </div>
 
           <div class="button-row">
