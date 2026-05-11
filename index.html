@@ -4,19 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Rousix Strategic Ownership Planner</title>
+  <title>Rousix Goal Pathway Planner</title>
 
   <meta
     name="description"
-    content="A prototype planning tool that helps visitors create a simple 24 to 36 month strategic ownership roadmap."
+    content="A simple interactive Rousix planning prototype that helps visitors map a goal, contribution path, infrastructure tier, and next step."
   />
-
-  <meta property="og:title" content="Rousix Strategic Ownership Planner" />
-  <meta
-    property="og:description"
-    content="Choose a goal, enter your contribution plan, and generate a simple strategic roadmap."
-  />
-  <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -24,19 +17,19 @@
 <body>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="#top" aria-label="Rousix Strategic Ownership Planner">
+      <a class="brand" href="#top" aria-label="Rousix Goal Pathway Planner">
         <span class="brand-mark">R</span>
         <span class="brand-text">
           <strong>Rousix</strong>
-          <small>Strategic Ownership Planner</small>
+          <small>Goal Pathway Planner</small>
         </span>
       </a>
 
-      <nav class="nav-links" aria-label="Primary navigation">
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="#planner">Start Planning</a>
         <a href="#roadmap">View Roadmap</a>
-        <a href="#process">Process</a>
-        <a href="#get-started">Get Started</a>
+        <a href="#start">Get Started</a>
+        <a href="#disclaimer">Disclaimer</a>
       </nav>
     </div>
   </header>
@@ -47,75 +40,73 @@
         <div class="hero-copy">
           <p class="eyebrow">Interactive prototype</p>
 
-          <h1>Start small. Build trust. Grow into the goal.</h1>
+          <h1>Choose a goal. Build a pathway. Start small or go bigger.</h1>
 
           <p class="hero-lede">
-            Choose a vehicle, home, equipment package, workstation, truck, or
-            business asset. Then enter a starting contribution, monthly
-            contribution, and timeline. The planner turns those numbers into a
-            simple strategic roadmap.
+            This planner helps you map a simple Rousix goal pathway. Enter a goal,
+            a price, a starting contribution, and a monthly contribution. The tool
+            shows what your plan looks like, what infrastructure tier may fit, and
+            what your next step could be.
           </p>
-
-          <div class="important-note">
-            <strong>Important:</strong>
-            This tool is for education only. It does not promise profit,
-            returns, mining output, liquidity, financing approval, or ownership.
-            It shows a planning path so you can understand the numbers before
-            speaking with Rousix.
-          </div>
 
           <div class="hero-actions">
             <a class="button button-primary" href="#planner">Start Planning</a>
             <a class="button button-secondary" href="#roadmap">View Roadmap</a>
           </div>
+
+          <div class="important-box">
+            <strong>Important:</strong>
+            This is an educational planning demo. It does not promise returns,
+            profits, liquidity, mining output, financing approval, or final ownership.
+            Start small, understand the process, and increase your commitment only
+            when the plan makes sense to you.
+          </div>
         </div>
 
-        <aside class="hero-panel" aria-label="Planning flow preview">
-          <div class="flow-card">
-            <span class="flow-label">Planning Flow</span>
+        <aside class="hero-card" aria-label="Planning flow">
+          <p class="card-kicker">Planning flow</p>
 
-            <ol class="flow-list">
-              <li>
-                <span>01</span>
-                <div>
-                  <strong>Choose a goal</strong>
-                  <small>Vehicle, home, equipment, workstation, or business asset.</small>
-                </div>
-              </li>
+          <ol class="flow-list">
+            <li>
+              <span>01</span>
+              <div>
+                <strong>Start Planning</strong>
+                <small>Choose a goal such as a vehicle, home, equipment, or business asset.</small>
+              </div>
+            </li>
 
-              <li>
-                <span>02</span>
-                <div>
-                  <strong>Enter contribution</strong>
-                  <small>Starting amount and monthly amount.</small>
-                </div>
-              </li>
+            <li>
+              <span>02</span>
+              <div>
+                <strong>Enter Contribution</strong>
+                <small>Add your starting amount and monthly amount. Minimums can start low.</small>
+              </div>
+            </li>
 
-              <li>
-                <span>03</span>
-                <div>
-                  <strong>Review the gap</strong>
-                  <small>See what remains after direct contributions.</small>
-                </div>
-              </li>
+            <li>
+              <span>03</span>
+              <div>
+                <strong>Review Goal Gap</strong>
+                <small>See the difference between your goal and your direct contribution path.</small>
+              </div>
+            </li>
 
-              <li>
-                <span>04</span>
-                <div>
-                  <strong>Compare scenarios</strong>
-                  <small>View cash-only, 5x example, and 10x example.</small>
-                </div>
-              </li>
+            <li>
+              <span>04</span>
+              <div>
+                <strong>Compare Options</strong>
+                <small>Adjust price, timeline, amount, or infrastructure tier.</small>
+              </div>
+            </li>
 
-              <li>
-                <span>05</span>
-                <div>
-                  <strong>Prepare next steps</strong>
-                  <small>Start small or move into a larger plan.</small>
-                </div>
-              </li>
-            </ol>
-          </div>
+            <li>
+              <span>05</span>
+              <div>
+                <strong>Prepare Next Steps</strong>
+                <small>Copy, print, verify payment method, and discuss the plan.</small>
+              </div>
+            </li>
+          </ol>
         </aside>
       </div>
     </section>
@@ -124,157 +115,137 @@
       <div class="shell">
         <div class="section-heading">
           <p class="eyebrow">Build a sample roadmap</p>
-          <h2>Enter your goal and contribution plan</h2>
+          <h2>Goal Pathway Planner</h2>
           <p>
-            Change the numbers and the roadmap updates automatically. The tool
-            uses simple math and clear language. No visitor information is saved.
+            Change any number and the roadmap updates automatically. The language
+            is intentionally simple so a first-time visitor can understand the plan.
           </p>
         </div>
 
         <div class="planner-grid">
           <form id="plannerForm" class="planner-card">
             <div class="form-header">
-              <h3>Individual Goal</h3>
-              <p>
-                Start with the goal. Then add the amount you can begin with and
-                the amount you may be able to contribute each month.
-              </p>
+              <h3>Your goal</h3>
+              <p>Use a sample or enter your own numbers.</p>
             </div>
 
-            <div class="sample-row" aria-label="Sample goal buttons">
-              <button type="button" class="sample-button" data-sample="vehicle">
-                Vehicle
-              </button>
-              <button type="button" class="sample-button" data-sample="home">
-                Home
-              </button>
-              <button type="button" class="sample-button" data-sample="equipment">
-                Equipment
-              </button>
-              <button type="button" class="sample-button" data-sample="business">
-                Business
-              </button>
+            <div class="sample-row">
+              <button type="button" class="sample-button" data-sample="starter">Starter</button>
+              <button type="button" class="sample-button" data-sample="vehicle">Vehicle</button>
+              <button type="button" class="sample-button" data-sample="home">Home</button>
+              <button type="button" class="sample-button" data-sample="equipment">Equipment</button>
+              <button type="button" class="sample-button" data-sample="business">Business</button>
             </div>
 
-            <label class="field">
-              <span>Goal Type</span>
-              <select id="goalType">
-                <option value="Vehicle" selected>Vehicle</option>
-                <option value="Truck">Truck</option>
-                <option value="Home">Home</option>
-                <option value="Business equipment">Business equipment</option>
-                <option value="Workstation">Workstation</option>
-                <option value="Business asset">Business asset</option>
-                <option value="Custom goal">Custom goal</option>
-              </select>
-            </label>
+            <div class="field-grid">
+              <label class="field">
+                <span>Goal type</span>
+                <select id="goalType">
+                  <option value="Vehicle" selected>Vehicle</option>
+                  <option value="Home">Home</option>
+                  <option value="Truck">Truck</option>
+                  <option value="Business equipment">Business equipment</option>
+                  <option value="Workstation">Workstation</option>
+                  <option value="Business asset">Business asset</option>
+                  <option value="Custom goal">Custom goal</option>
+                </select>
+              </label>
 
-            <label class="field">
-              <span>Goal Name</span>
-              <input
-                id="goalName"
-                type="text"
-                value="Family vehicle"
-                maxlength="70"
-                autocomplete="off"
-              />
-            </label>
+              <label class="field">
+                <span>Goal name</span>
+                <input id="goalName" type="text" value="Family vehicle" maxlength="70" />
+              </label>
+            </div>
 
             <label class="field">
               <span>Price</span>
               <div class="money-input">
                 <span>$</span>
-                <input
-                  id="price"
-                  type="number"
-                  value="42000"
-                  min="1"
-                  step="500"
-                  inputmode="decimal"
-                />
+                <input id="goalPrice" type="number" value="42000" min="1" step="100" />
               </div>
             </label>
 
             <div class="field-grid">
               <label class="field">
-                <span>Starting Contribution</span>
+                <span>Starting contribution</span>
                 <div class="money-input">
                   <span>$</span>
-                  <input
-                    id="startingContribution"
-                    type="number"
-                    value="5000"
-                    min="5"
-                    step="100"
-                    inputmode="decimal"
-                  />
+                  <input id="startingContribution" type="number" value="700" min="5" step="5" />
                 </div>
               </label>
 
               <label class="field">
-                <span>Monthly Contribution</span>
+                <span>Monthly contribution</span>
                 <div class="money-input">
                   <span>$</span>
-                  <input
-                    id="monthlyContribution"
-                    type="number"
-                    value="500"
-                    min="1"
-                    step="25"
-                    inputmode="decimal"
-                  />
+                  <input id="monthlyContribution" type="number" value="215" min="1" step="1" />
                 </div>
               </label>
             </div>
 
-            <label class="field">
-              <span>Planning Timeline</span>
-              <select id="timelineMonths">
-                <option value="24">24 months</option>
-                <option value="30">30 months</option>
-                <option value="36" selected>36 months</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span>Rousix Infrastructure Selection</span>
-              <select id="selectedTier">
-                <option value="auto" selected>Auto-suggest based on goal</option>
-                <option value="basic">Basic Tablet — $1,250+</option>
-                <option value="standard">Standard — $4,100+</option>
-                <option value="standardPlus">Standard Plus — $8,250+</option>
-                <option value="premier">Premier — $12,450+</option>
-                <option value="titan">Titan — $75,000+</option>
-                <option value="colossus">Colossus — $150,000+</option>
-                <option value="olympus">Olympus — $300,000+</option>
-              </select>
-            </label>
-
-            <div class="toggle-card">
-              <label class="check-field">
-                <input id="reserveInfrastructureFirst" type="checkbox" checked />
-                <span>Reserve infrastructure cost first</span>
+            <div class="field-grid">
+              <label class="field">
+                <span>Planning timeline</span>
+                <select id="timelineMonths">
+                  <option value="24">24 months</option>
+                  <option value="30">30 months</option>
+                  <option value="36" selected>36 months</option>
+                </select>
               </label>
 
-              <p>
-                If checked, the planner applies your starting contribution toward
-                the suggested infrastructure first. If the starting contribution
-                is not enough, the remaining infrastructure amount is shown as
-                something monthly contributions would need to cover before the
-                broader goal plan continues.
-              </p>
+              <label class="field">
+                <span>Illustration model</span>
+                <select id="multiplierModel">
+                  <option value="5" selected>5x illustration</option>
+                  <option value="10">10x illustration</option>
+                </select>
+              </label>
             </div>
 
             <div class="toggle-card">
               <label class="check-field">
-                <input id="includePaymentStep" type="checkbox" checked />
-                <span>Show mock $1 payment-method step</span>
+                <input id="autoTier" type="checkbox" checked />
+                <span>Automatically suggest infrastructure tier</span>
               </label>
 
               <p>
-                This prototype does not collect real payments. In a live version,
-                Rousix could use this step to verify a payment method. The $1
-                could be credited toward the actual plan.
+                The suggestion changes when you change the price, contribution
+                amounts, timeline, or illustration model.
+              </p>
+            </div>
+
+            <label class="field">
+              <span>Infrastructure tier</span>
+              <select id="infrastructureTier">
+                <option value="basic">Rousix Basic Tablet — $1,250+</option>
+                <option value="standard">Rousix Standard — $4,100+</option>
+                <option value="standardPlus">Rousix Standard Plus — $8,250+</option>
+                <option value="premium">Rousix Premium — $12,450+</option>
+                <option value="titan">Rousix Titan — $75,000+</option>
+                <option value="colossus">Rousix Colossus — $150,000+</option>
+                <option value="olympus">Rousix Olympus — $300,000+</option>
+              </select>
+            </label>
+
+            <div class="toggle-card">
+              <label class="check-field">
+                <input id="includeInfrastructureCost" type="checkbox" checked />
+                <span>Deduct infrastructure cost from contributions first</span>
+              </label>
+
+              <p>
+                If the starting contribution does not cover the selected infrastructure,
+                the remaining infrastructure amount is treated as coming from monthly
+                contributions before the goal pathway is fully funded.
+              </p>
+            </div>
+
+            <div class="minimum-box">
+              <h4>Minimum start idea</h4>
+              <p>
+                Payment method verification can begin with a $1.00 charge. A starter
+                contribution can be as low as $5.00, with a monthly amount as low as
+                $1.00. Larger goals may need a stronger path.
               </p>
             </div>
 
@@ -282,6 +253,7 @@
               <button type="button" id="copySummary" class="button button-secondary">
                 Copy Summary
               </button>
+
               <button type="button" id="printRoadmap" class="button button-primary">
                 Print Roadmap
               </button>
@@ -290,117 +262,118 @@
 
           <section class="results-card" aria-live="polite">
             <div class="result-top">
-              <p class="eyebrow">Roadmap summary</p>
-              <h3 id="resultTitle">Family vehicle plan</h3>
-              <p id="resultSubtitle">
-                A simple 36-month strategic planning example.
-              </p>
+              <p class="eyebrow">Your sample plan</p>
+              <h3 id="resultTitle">Family vehicle pathway</h3>
+              <p id="resultSubtitle">A 36-month educational planning example.</p>
             </div>
 
-            <div id="ruleAlert" class="rule-alert">
-              <strong>Minimums:</strong>
-              Starting contribution must be at least $5. Monthly contribution
-              must be at least $1. The timeline starts at 24 months.
+            <div id="statusPanel" class="status-panel">
+              <span id="statusBadge">Starter pathway</span>
+              <p id="statusText">Enter a goal to see the planning result.</p>
             </div>
 
             <div class="meter-card">
               <div class="meter-header">
-                <span>Direct contribution path</span>
-                <strong id="directCoveragePercent">0%</strong>
+                <span>Progress toward direct-capital target</span>
+                <strong id="coveragePercent">0%</strong>
               </div>
 
               <div class="meter-track">
-                <div id="directCoverageBar" class="meter-fill"></div>
+                <div id="coverageBar" class="meter-fill"></div>
               </div>
 
-              <p id="directCoverageNote" class="meter-note">
-                This shows only the money entered into the planner. It does not
-                include returns or performance.
+              <p id="coverageNote" class="meter-note">
+                This shows direct planned contributions after infrastructure cost.
               </p>
             </div>
 
             <div class="metric-grid">
               <article class="metric-card">
-                <span>Total direct contribution</span>
-                <strong id="totalDirectContribution">$0</strong>
+                <span>Price</span>
+                <strong id="goalPriceOut">$0</strong>
+                <small>The goal you entered.</small>
+              </article>
+
+              <article class="metric-card">
+                <span>Direct-capital target</span>
+                <strong id="directTargetOut">$0</strong>
+                <small id="directTargetNote">Based on the selected illustration model.</small>
+              </article>
+
+              <article class="metric-card">
+                <span>Suggested starting point</span>
+                <strong id="startMinOut">$0</strong>
+                <small>Goal-fit starting point, not the $5 starter minimum.</small>
+              </article>
+
+              <article class="metric-card">
+                <span>Suggested monthly path</span>
+                <strong id="monthlyMinOut">$0</strong>
+                <small>Goal-fit monthly amount before infrastructure adjustment.</small>
+              </article>
+
+              <article class="metric-card">
+                <span>Infrastructure suggestion</span>
+                <strong id="tierOut">Standard</strong>
+                <small id="tierWhyOut">Based on your numbers.</small>
+              </article>
+
+              <article class="metric-card">
+                <span>Infrastructure cost</span>
+                <strong id="machineCostOut">$0</strong>
+                <small id="machineBalanceOut">Deducted from contribution path first.</small>
+              </article>
+
+              <article class="metric-card">
+                <span>Total planned contribution</span>
+                <strong id="totalContribOut">$0</strong>
                 <small>Starting contribution plus monthly contributions.</small>
               </article>
 
               <article class="metric-card">
-                <span>Simple remaining gap</span>
-                <strong id="simpleGap">$0</strong>
-                <small>The part of the price not covered by direct contributions.</small>
-              </article>
-
-              <article class="metric-card">
-                <span>Suggested infrastructure</span>
-                <strong id="suggestedInfrastructure">Standard</strong>
-                <small id="suggestedInfrastructureReason">Based on goal size.</small>
-              </article>
-
-              <article class="metric-card">
-                <span>Infrastructure balance</span>
-                <strong id="infrastructureBalance">$0</strong>
-                <small>Amount not covered by starting contribution.</small>
+                <span>Remaining goal-path gap</span>
+                <strong id="remainingGapOut">$0</strong>
+                <small id="remainingGapNote">What still needs to be solved.</small>
               </article>
             </div>
 
-            <div class="summary-card">
-              <h3>Plain-English Summary</h3>
+            <div class="plain-card">
+              <h3>Plain-English summary</h3>
               <p id="plainSummary"></p>
+            </div>
+
+            <div class="plain-card">
+              <h3>5x / 10x example in simple terms</h3>
+              <p id="multiplierExplanation"></p>
             </div>
           </section>
         </div>
       </div>
     </section>
 
-    <section id="scenarios" class="scenario-section">
+    <section id="compare" class="compare-section">
       <div class="shell">
         <div class="section-heading">
           <p class="eyebrow">Compare options</p>
-          <h2>Cash-only path and hypothetical examples</h2>
+          <h2>Change the plan without guessing</h2>
           <p>
-            These examples are for understanding the math. They are not promises
-            or predictions. They show how much contribution would be needed under
-            different what-if scenarios.
+            This section gives simple alternatives. It helps people understand
+            what changes when they adjust the timeline, monthly amount, or goal path.
           </p>
         </div>
 
-        <div class="scenario-grid">
-          <article class="scenario-card">
-            <span class="scenario-label">Cash-only</span>
-            <h3 id="cashOnlyTitle">$0 needed</h3>
-            <p id="cashOnlyText"></p>
-          </article>
-
-          <article class="scenario-card">
-            <span class="scenario-label">5x what-if</span>
-            <h3 id="fiveXTitle">$0 target base</h3>
-            <p id="fiveXText"></p>
-          </article>
-
-          <article class="scenario-card">
-            <span class="scenario-label">10x what-if</span>
-            <h3 id="tenXTitle">$0 target base</h3>
-            <p id="tenXText"></p>
-          </article>
-        </div>
-
-        <div class="network-card">
-          <h3>Plain-English network effect explanation</h3>
-          <p id="networkText"></p>
-        </div>
+        <div id="optionList" class="option-grid"></div>
       </div>
     </section>
 
     <section id="roadmap" class="roadmap-section">
       <div class="shell">
         <div class="section-heading">
-          <p class="eyebrow">View roadmap</p>
-          <h2>36-month strategic plan flow</h2>
+          <p class="eyebrow">Understand roadmap</p>
+          <h2>What your planning stages mean</h2>
           <p>
-            This section explains the plan from top to bottom in simple terms.
-            It avoids dense language and keeps the steps easy to follow.
+            This version reads from top to bottom. Each step says what happens,
+            what the number means, and what to do next.
           </p>
         </div>
 
@@ -408,84 +381,94 @@
       </div>
     </section>
 
-    <section id="process" class="process-section">
-      <div class="shell">
-        <div class="section-heading">
-          <p class="eyebrow">A clearer way to explain surplus-based planning</p>
-          <h2>The Rousix planning idea in simple language</h2>
+    <section id="start" class="start-section">
+      <div class="shell start-grid">
+        <div>
+          <p class="eyebrow">Get started</p>
+          <h2>Verify payment method and start small.</h2>
+
+          <p>
+            The real version should collect payment method data through a secure
+            hosted checkout page, not directly on this static site. A $1.00
+            verification charge can be treated as a plan credit. From there, a
+            person can start small, build confidence, and increase their path only
+            when they understand the system.
+          </p>
+
+          <p>
+            Suggested minimums for the first live version:
+          </p>
+
+          <ul class="simple-list">
+            <li>$1.00 payment method verification</li>
+            <li>$5.00 minimum starting contribution</li>
+            <li>$1.00 minimum monthly contribution</li>
+            <li>No maximum contribution cap inside the planning concept</li>
+          </ul>
         </div>
 
-        <div class="process-grid">
-          <article class="process-card">
-            <span>01</span>
-            <h3>Clear Goal</h3>
-            <p>
-              Pick what you want to work toward: a car, truck, home, equipment,
-              workstation, or business asset.
-            </p>
-          </article>
+        <div class="start-card">
+          <h3>Payment step</h3>
+          <p>
+            This button is ready for a Stripe Payment Link. Replace the placeholder
+            link in <code>app.js</code> with your real hosted checkout link.
+          </p>
 
-          <article class="process-card">
-            <span>02</span>
-            <h3>Goal Pathway</h3>
-            <p>
-              The planner shows how your starting amount and monthly amount
-              connect to the price of the thing you want.
-            </p>
-          </article>
+          <button type="button" id="startPayment" class="button button-primary full-button">
+            Start with $1 Verification
+          </button>
 
-          <article class="process-card">
-            <span>03</span>
-            <h3>Guided Explanation</h3>
-            <p>
-              The roadmap explains the gap in plain language so you know what
-              would need to change: the timeline, monthly amount, goal, or tier.
-            </p>
-          </article>
-
-          <article class="process-card">
-            <span>04</span>
-            <h3>Careful Expectations</h3>
-            <p>
-              Start small, build trust in the process, and only go bigger when
-              you understand the risks and the plan.
-            </p>
-          </article>
+          <p class="microcopy">
+            No card information is collected by this GitHub Pages prototype.
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="get-started" class="get-started-section">
+    <section class="concept-section">
       <div class="shell">
-        <div class="get-started-card">
-          <div>
-            <p class="eyebrow">Get started</p>
-            <h2>Start with the smallest real step.</h2>
-            <p>
-              In a live version, this is where Rousix could collect payment
-              method data with a $1 verification charge. That $1 could be
-              credited toward the member’s actual plan.
-            </p>
+        <div class="section-heading">
+          <p class="eyebrow">Clearer explanation</p>
+          <h2>A simpler way to explain surplus-based planning</h2>
+        </div>
 
+        <div class="concept-grid">
+          <article class="concept-card">
+            <span>01</span>
+            <h3>Clear Goal</h3>
             <p>
-              The minimum starting contribution can be as low as $5, with a
-              recurring monthly contribution as low as $1. Members who want to
-              move faster can choose larger amounts, but the planner is designed
-              to let people start small and work their way up.
+              You choose something real: a car, truck, home, equipment package,
+              workstation, or business asset.
             </p>
-          </div>
+          </article>
 
-          <div class="mock-payment-card">
-            <span>Mock payment step</span>
-            <strong>$1.00</strong>
+          <article class="concept-card">
+            <span>02</span>
+            <h3>Goal Pathway</h3>
             <p>
-              Payment method verification only. No real payment is collected in
-              this prototype.
+              The planner shows how your starting amount and monthly amount compare
+              to the goal you selected.
             </p>
-            <button type="button" class="button button-primary" disabled>
-              Payment disabled in demo
-            </button>
-          </div>
+          </article>
+
+          <article class="concept-card">
+            <span>03</span>
+            <h3>Network Effect</h3>
+            <p>
+              More participants and more Rousix infrastructure may improve the
+              usefulness of the network. This prototype does not turn that into a
+              promise or guarantee.
+            </p>
+          </article>
+
+          <article class="concept-card">
+            <span>04</span>
+            <h3>Careful Expectations</h3>
+            <p>
+              Start small. Learn the process. Ask questions. Increase your path
+              only when you understand the risk and the goal.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -496,23 +479,25 @@
           <h2>Disclaimer</h2>
 
           <p>
-            This Strategic Ownership Planner is a demonstration interface for
-            education and marketing only. It does not provide financial,
-            investment, tax, legal, credit, lending, mining, staking, or
-            accounting advice.
+            This Rousix Goal Pathway Planner is a prototype for educational and
+            marketing demonstration purposes only. It does not provide financial,
+            investment, tax, legal, credit, lending, mining, staking, or accounting
+            advice.
           </p>
 
           <p>
-            The hypothetical 5x and 10x examples are not predictions, promises,
-            guarantees, or expected returns. They are simple math examples used
-            to explain how a target amount changes under different assumptions.
+            The 5x and 10x examples are illustrations only. They are not promises,
+            forecasts, guarantees, investment returns, or final ownership outcomes.
+            The prototype does not predict profits, returns, mining output, staking
+            output, appreciation, liquidity, financing approval, asset purchase, or
+            goal completion.
           </p>
 
           <p>
-            The planner does not guarantee profit, returns, liquidity,
-            appreciation, financing approval, asset purchase, payment ability,
-            or ownership outcomes. Any real plan should be reviewed with Rousix
-            representatives and appropriate professional advisors.
+            Any real Rousix onboarding, contribution plan, machine purchase,
+            lease-back discussion, payment method verification, or ownership
+            strategy should be reviewed directly with a qualified Rousix
+            representative and appropriate professional advisors.
           </p>
         </div>
       </div>
@@ -521,8 +506,8 @@
 
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <p>© <span id="year"></span> Rousix Strategic Ownership Planner Prototype.</p>
-      <p>Static GitHub Pages demo. No visitor data is stored.</p>
+      <p>© <span id="year"></span> Rousix Goal Pathway Planner Prototype.</p>
+      <p>Static GitHub Pages demo. No card data is collected here.</p>
     </div>
   </footer>
 
