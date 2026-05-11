@@ -12,7 +12,7 @@
 <body>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="index.html">
+      <a class="brand" href="index.html" aria-label="Rousix Planner Home">
         <span class="brand-mark">R</span>
         <span class="brand-text">
           <strong>Rousix</strong>
@@ -20,7 +20,7 @@
         </span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="planner.html">Start Planning</a>
         <a href="roadmap.html">View Roadmap</a>
         <a href="get-started.html">Get Started</a>
@@ -32,10 +32,12 @@
     <section class="page-hero">
       <div class="shell">
         <p class="eyebrow">Get started</p>
+
         <h1>Start small. Learn the process. Decide what comes next.</h1>
+
         <p>
-          This prototype includes a simple activation step. In a real version,
-          the button below would connect to a secure payment checkout page.
+          Begin with a small activation step, review your roadmap, and decide
+          whether you want to continue building toward your goal.
         </p>
       </div>
     </section>
@@ -44,17 +46,24 @@
       <div class="shell start-grid">
         <section class="start-card">
           <p class="eyebrow">Activation step</p>
-          <h2>$1 payment-method activation</h2>
+
+          <h2>$1 activation</h2>
 
           <p>
-            A real version of this page could use a secure checkout provider to
-            collect a payment method with a $1 activation charge. That $1 could
-            then be credited toward the person’s actual plan.
+            The $1 activation confirms your payment method and can be credited
+            toward your plan. You can start small, learn the process, and decide
+            whether to increase your commitment later.
+          </p>
+
+          <p id="activationPlanSummary">Your saved sample plan will appear here.</p>
+
+          <p id="activationCreditText">
+            Your activation can be connected to the plan you created.
           </p>
 
           <div class="minimum-list">
             <div>
-              <span>Minimum activation</span>
+              <span>Activation</span>
               <strong>$1</strong>
             </div>
 
@@ -70,29 +79,26 @@
           </div>
 
           <div class="important-card">
-            <strong>Important:</strong>
-            Do not collect card numbers directly on a GitHub Pages site. Use a
-            secure checkout link from a payment processor. Replace the button
-            below with the real checkout link when ready.
+            <strong>Clear expectations:</strong>
+            Activation does not guarantee profit, returns, liquidity, approval,
+            financing, asset purchase, or ownership. It simply begins the next
+            step in the planning process.
           </div>
 
-          <a
-            class="button button-primary full-button"
-            href="#"
-            onclick="alert('Replace this button with a secure checkout link when the payment account is ready.'); return false;"
-          >
-            Activate with $1
+          <a id="activationButton" class="button button-primary full-button" href="#">
+            Continue to Secure Activation
           </a>
         </section>
 
         <aside class="start-card">
           <p class="eyebrow">Simple onboarding</p>
+
           <h2>What happens next?</h2>
 
           <ol class="vertical-steps">
             <li>
-              <strong>Input personal credentials</strong>
-              <p>Basic information needed to begin a real onboarding process.</p>
+              <strong>Confirm your information</strong>
+              <p>Provide the basic information needed to begin the process.</p>
             </li>
 
             <li>
@@ -101,20 +107,22 @@
             </li>
 
             <li>
-              <strong>Confirm your numbers</strong>
+              <strong>Review your numbers</strong>
               <p>Price, starting contribution, monthly contribution, and timeline.</p>
             </li>
 
             <li>
-              <strong>Review your roadmap</strong>
-              <p>Understand the gap, compare options, and ask questions.</p>
+              <strong>Understand your roadmap</strong>
+              <p>
+                Review the infrastructure amount, plan base, gap, and compare options.
+              </p>
             </li>
 
             <li>
-              <strong>Decide your comfort level</strong>
+              <strong>Choose your comfort level</strong>
               <p>
-                Start small if you want to test the process. Increase your
-                commitment only if the plan makes sense to you.
+                Start small if you want to build trust first. Increase only when
+                the plan makes sense to you.
               </p>
             </li>
           </ol>
@@ -128,8 +136,8 @@
           <h2>Disclaimer</h2>
 
           <p>
-            This prototype does not provide financial, investment, tax, legal,
-            credit, lending, mining, staking, or accounting advice.
+            This planning tool does not provide financial, investment, tax,
+            legal, credit, lending, mining, staking, or accounting advice.
           </p>
 
           <p>
@@ -144,13 +152,15 @@
           </p>
 
           <p>
-            The purpose of this prototype is to explain a planning concept in
-            simple language and show how a future app could guide someone
-            through the process.
+            The purpose of this tool is to explain a planning concept in simple
+            language and help you understand the next step before making a larger
+            commitment.
           </p>
         </div>
       </div>
     </section>
   </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
