@@ -73,10 +73,6 @@ button {
   cursor: pointer;
 }
 
-code {
-  color: var(--gold-2);
-}
-
 .shell {
   width: min(var(--max), calc(100% - 36px));
   margin-inline: auto;
@@ -168,7 +164,7 @@ code {
 }
 
 .page-hero p:not(.eyebrow) {
-  max-width: 820px;
+  max-width: 780px;
   color: var(--muted);
   font-size: 1.08rem;
 }
@@ -273,8 +269,7 @@ h3 {
 .disclaimer-card,
 .scenario-panel,
 .scenario-card,
-.minimum-box,
-.compare-card {
+.minimum-box {
   border: 1px solid var(--line);
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.055));
@@ -283,7 +278,7 @@ h3 {
 }
 
 .important-card {
-  max-width: 820px;
+  max-width: 780px;
   margin: 24px 0 0;
   padding: 16px 18px;
   color: var(--muted);
@@ -347,11 +342,7 @@ h3 {
 .stage-card p,
 .start-card p,
 .disclaimer-card p,
-.explanation-panel p,
-.scenario-card p,
-.scenario-panel p,
-.minimum-box p,
-.compare-card p {
+.explanation-panel p {
   color: var(--muted);
 }
 
@@ -470,12 +461,6 @@ h3 {
   font-weight: 850;
 }
 
-.field-help {
-  color: var(--faint);
-  font-size: 0.82rem;
-  line-height: 1.35;
-}
-
 input,
 select {
   width: 100%;
@@ -526,11 +511,11 @@ select:focus {
   margin-top: 6px;
   padding: 16px;
   border-radius: var(--radius-md);
-  box-shadow: none;
 }
 
 .minimum-box p {
   margin-bottom: 0;
+  color: var(--muted);
   font-size: 0.92rem;
 }
 
@@ -582,57 +567,9 @@ select:focus {
   gap: 12px;
 }
 
-.compare-section-inline {
-  margin-top: 28px;
-}
-
-.muted-copy {
+.scenario-card p,
+.scenario-panel p {
   color: var(--muted);
-}
-
-.compare-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.compare-card {
-  padding: 18px;
-  border-radius: var(--radius-lg);
-  box-shadow: none;
-}
-
-.compare-card h3 {
-  color: var(--gold-2);
-}
-
-.compare-mini {
-  display: grid;
-  gap: 8px;
-  margin: 14px 0;
-}
-
-.compare-mini div {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.compare-mini span {
-  color: var(--faint);
-  font-size: 0.86rem;
-}
-
-.compare-mini strong {
-  text-align: right;
-}
-
-.compare-note {
-  margin-bottom: 0;
-  font-weight: 700;
 }
 
 .roadmap-layout {
@@ -700,6 +637,14 @@ select:focus {
 
 .layman-text h3 {
   color: var(--gold-2);
+}
+
+.network-note {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.055);
 }
 
 .start-grid {
@@ -798,8 +743,7 @@ select:focus {
     position: static;
   }
 
-  .concept-grid,
-  .compare-grid {
+  .concept-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -821,8 +765,7 @@ select:focus {
   .metric-grid,
   .sample-row,
   .scenario-grid,
-  .concept-grid,
-  .compare-grid {
+  .concept-grid {
     grid-template-columns: 1fr;
   }
 
@@ -865,8 +808,7 @@ select:focus {
   .stage-card,
   .explanation-panel,
   .disclaimer-card,
-  .metric-card,
-  .compare-card {
+  .metric-card {
     color: #111827;
     background: #ffffff;
     box-shadow: none;
@@ -875,8 +817,7 @@ select:focus {
 
   p,
   .metric-card small,
-  .metric-card span,
-  .compare-mini span {
+  .metric-card span {
     color: #374151 !important;
   }
 }
