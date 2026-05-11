@@ -1,4 +1,4 @@
-const CHECKOUT_URL = "";
+const ACTIVATION_URL = "";
 
 const tiers = {
   basic: {
@@ -165,34 +165,17 @@ function calculatePlan(plan) {
 
   const infrastructureCost = suggestedTier.price;
 
-  const infrastructureCoveredFromStart =
-    Math.min(plan.startingContribution, infrastructureCost);
-
-  const infrastructureRemainingAfterStart =
-    Math.max(infrastructureCost - plan.startingContribution, 0);
-
-  const monthlyTotal = plan.monthlyContribution * timelineMonths;
-
-  const monthlyUsedForInfrastructure =
-    Math.min(monthlyTotal, infrastructureRemainingAfterStart);
-
-  const monthlyAvailableForPlanBase =
-    Math.max(monthlyTotal - monthlyUsedForInfrastructure, 0);
-
-  const startingAvailableForPlanBase =
-    Math.max(plan.startingContribution - infrastructureCost, 0);
+  const infrastructureCovered = Math.min(directTotal, infrastructureCost);
+  const infrastructureGap = Math.max(infrastructureCost - directTotal, 0);
 
   const availablePlanBaseAfterInfrastructure =
-    startingAvailableForPlanBase + monthlyAvailableForPlanBase;
+    Math.max(directTotal - infrastructureCost, 0);
 
   const fiveXPlanBaseGap =
     Math.max(fiveXBase - availablePlanBaseAfterInfrastructure, 0);
 
   const tenXPlanBaseGap =
     Math.max(tenXBase - availablePlanBaseAfterInfrastructure, 0);
-
-  const monthlyNeededForPure5x =
-    Math.max(fiveXBase - plan.startingContribution, 0) / timelineMonths;
 
   const monthlyNeededFor5xAfterInfrastructure =
     Math.max(fiveXBase + infrastructureCost - plan.startingContribution, 0) /
@@ -220,16 +203,11 @@ function calculatePlan(plan) {
     goalStartingMinimum,
     isStarterPlan,
     infrastructureCost,
-    infrastructureCoveredFromStart,
-    infrastructureRemainingAfterStart,
-    monthlyTotal,
-    monthlyUsedForInfrastructure,
-    monthlyAvailableForPlanBase,
-    startingAvailableForPlanBase,
+    infrastructureCovered,
+    infrastructureGap,
     availablePlanBaseAfterInfrastructure,
     fiveXPlanBaseGap,
     tenXPlanBaseGap,
-    monthlyNeededForPure5x,
     monthlyNeededFor5xAfterInfrastructure,
     monthlyNeededFor10xAfterInfrastructure,
     realisticGoalAt5x,
@@ -263,8 +241,7 @@ function renderPlanner() {
   const calc = calculatePlan(plan);
 
   savePlan(calc);
-
-  updateInputMinimums(calc);
+  updateInputGuidance(calc);
 
   $("resultTitle").textContent = `${calc.goalName} pathway`;
 
@@ -281,7 +258,7 @@ function renderPlanner() {
   $("goalMinimum").textContent = money(calc.goalStartingMinimum);
 
   $("tierReason").textContent =
-    "The suggested tier is based mainly on the 5x planning base. Larger goals usually create a larger infrastructure conversation.";
+    "The tier changes when the planning base changes. Larger goals usually create larger infrastructure conversations.";
 
   $("plainEnglish").textContent = buildPlainEnglish(calc);
   $("fiveXText").textContent = buildFiveXText(calc);
@@ -294,45 +271,56 @@ function renderPlanner() {
   window.currentRousixPlan = calc;
 }
 
-function updateInputMinimums(calc) {
+function updateInputGuidance(calc) {
   const startHelp = $("startingHelp");
 
   if (startHelp) {
     startHelp.textContent =
-      `Minimum: $5. Suggested full-goal starting point for this price: ${money(calc.goalStartingMinimum)}.`;
+      `Absolute minimum: $5. Suggested full-goal starting point for this price: ${money(calc.goalStartingMinimum)}.`;
   }
 
   const monthlyHelp = $("monthlyHelp");
 
   if (monthlyHelp) {
     monthlyHelp.textContent =
-      `Minimum: $1. A 5x path after infrastructure would need about ${money(calc.monthlyNeededFor5xAfterInfrastructure)} per month with your current starting amount.`;
+      `Absolute minimum: $1. To cover the 5x example after infrastructure, this plan would need about ${money(calc.monthlyNeededFor5xAfterInfrastructure)} per month.`;
   }
 }
 
 function buildPlainEnglish(calc) {
+  if (calc.infrastructureGap > 0) {
+    return (
+      `You want ${calc.goalName}, priced at ${money(calc.price)}. ` +
+      `A simple 5x example uses a planning base of ${money(calc.fiveXBase)}. ` +
+      `The suggested infrastructure path is ${calc.suggestedTier.fullName}, shown at ${money(calc.infrastructureCost)}. ` +
+      `Your total contributions over ${calc.timelineMonths} months are ${money(calc.directTotal)}. ` +
+      `That does not fully cover the suggested infrastructure amount yet. The infrastructure gap is ${money(calc.infrastructureGap)}. ` +
+      `In plain terms: this is a starter path. The first step is covering the infrastructure amount before the plan base can begin building.`
+    );
+  }
+
   return (
     `You want ${calc.goalName}, priced at ${money(calc.price)}. ` +
-    `A simple 5x example says the plan would need a base of about ${money(calc.fiveXBase)}. ` +
-    `The suggested infrastructure tier is ${calc.suggestedTier.fullName}, shown at ${money(calc.infrastructureCost)}. ` +
-    `Your contributions first cover that infrastructure amount. After that, the remaining contribution amount supports the plan base. ` +
-    `With your current numbers, about ${money(calc.availablePlanBaseAfterInfrastructure)} is available for the 5x plan base, leaving about ${money(calc.fiveXPlanBaseGap)} still to solve. ` +
-    `This is a planning example only.`
+    `A simple 5x example uses a planning base of ${money(calc.fiveXBase)}. ` +
+    `The suggested infrastructure path is ${calc.suggestedTier.fullName}, shown at ${money(calc.infrastructureCost)}. ` +
+    `Your total contributions over ${calc.timelineMonths} months are ${money(calc.directTotal)}. ` +
+    `After the infrastructure amount is accounted for, about ${money(calc.availablePlanBaseAfterInfrastructure)} remains for the plan base. ` +
+    `The remaining amount to reach the 5x planning base is ${money(calc.fiveXPlanBaseGap)}. ` +
+    `That remaining amount is the gap.`
   );
 }
 
 function buildFiveXText(calc) {
   return (
-    `For a ${money(calc.price)} goal, a 5x example means ${money(calc.price)} divided by 5, which equals ${money(calc.fiveXBase)}. ` +
-    `The shown infrastructure amount is ${money(calc.infrastructureCost)}. ` +
-    `With your current starting amount, a 5x path after infrastructure would need about ${money(calc.monthlyNeededFor5xAfterInfrastructure)} per month over ${calc.timelineMonths} months.`
+    `For a ${money(calc.price)} goal, the 5x example is ${money(calc.price)} divided by 5, which equals ${money(calc.fiveXBase)}. ` +
+    `After the ${money(calc.infrastructureCost)} infrastructure amount is included, this path would need about ${money(calc.monthlyNeededFor5xAfterInfrastructure)} per month over ${calc.timelineMonths} months with the current starting amount.`
   );
 }
 
 function buildTenXText(calc) {
   return (
-    `For the same ${money(calc.price)} goal, a 10x example means ${money(calc.price)} divided by 10, which equals ${money(calc.tenXBase)}. ` +
-    `This requires a smaller plan base than the 5x example, but it is more aggressive. It is an example, not a promised result.`
+    `For the same ${money(calc.price)} goal, the 10x example is ${money(calc.price)} divided by 10, which equals ${money(calc.tenXBase)}. ` +
+    `This requires a smaller planning base than the 5x example, but it is also a more aggressive scenario. It is shown to explain the math, not to promise a result.`
   );
 }
 
@@ -340,47 +328,46 @@ function buildStarterStatus(calc) {
   if (calc.isStarterPlan) {
     return (
       `Your starting amount is below the suggested full-goal starting point of ${money(calc.goalStartingMinimum)}. ` +
-      `That can still be useful as a small start. It simply means this should be viewed as a trust-building first step, not a full-goal plan yet.`
+      `That can still be useful as a small beginning. It simply means this should be viewed as a starter path, not a full-goal path yet.`
     );
   }
 
   return (
     `Your starting amount meets the suggested full-goal starting point of ${money(calc.goalStartingMinimum)} for this price. ` +
-    `The next question is whether the monthly amount supports the plan base over ${calc.timelineMonths} months.`
+    `The next question is whether the monthly amount supports the planning base over ${calc.timelineMonths} months.`
   );
 }
 
 function buildFormulaNote(calc) {
   return (
-    "The simple formula is: price divided by 5 equals the 5x planning base. " +
-    "The suggested infrastructure amount is handled first. " +
-    "After that, the remaining contributions support the plan base. " +
-    "If the plan base is still short, the shortfall is the 5x gap."
+    `Simple formula: price divided by 5 equals the 5x planning base. ` +
+    `For this plan, ${money(calc.price)} divided by 5 equals ${money(calc.fiveXBase)}. ` +
+    `The suggested infrastructure amount is handled first. After that, the remaining contributions support the planning base.`
   );
 }
 
 function buildCompareOptions(calc) {
   const current = calc;
 
-  const fiveXMonthlyNeeded =
+  const cover5xMonthly =
     roundUpTo(calc.monthlyNeededFor5xAfterInfrastructure, 25);
 
-  const fiveXPath = calculatePlan({
+  const cover5xPath = calculatePlan({
     goalType: calc.goalType,
     goalName: calc.goalName,
     price: calc.price,
     startingContribution: calc.startingContribution,
-    monthlyContribution: fiveXMonthlyNeeded,
+    monthlyContribution: cover5xMonthly,
     timelineMonths: calc.timelineMonths
   });
 
-  const recommendedStart =
+  const strongerStartAmount =
     Math.max(calc.goalStartingMinimum, Math.min(calc.infrastructureCost, calc.price));
 
-  const recommendedStartMonthly =
+  const strongerStartMonthly =
     roundUpTo(
       Math.max(
-        (calc.fiveXBase + calc.infrastructureCost - recommendedStart) /
+        (calc.fiveXBase + calc.infrastructureCost - strongerStartAmount) /
           calc.timelineMonths,
         1
       ),
@@ -391,8 +378,8 @@ function buildCompareOptions(calc) {
     goalType: calc.goalType,
     goalName: calc.goalName,
     price: calc.price,
-    startingContribution: recommendedStart,
-    monthlyContribution: recommendedStartMonthly,
+    startingContribution: strongerStartAmount,
+    monthlyContribution: strongerStartMonthly,
     timelineMonths: calc.timelineMonths
   });
 
@@ -408,7 +395,7 @@ function buildCompareOptions(calc) {
     timelineMonths: calc.timelineMonths
   });
 
-  const tenXMonthlyNeeded =
+  const cover10xMonthly =
     roundUpTo(calc.monthlyNeededFor10xAfterInfrastructure, 25);
 
   const tenXPath = calculatePlan({
@@ -416,18 +403,18 @@ function buildCompareOptions(calc) {
     goalName: calc.goalName,
     price: calc.price,
     startingContribution: calc.startingContribution,
-    monthlyContribution: tenXMonthlyNeeded,
+    monthlyContribution: cover10xMonthly,
     timelineMonths: calc.timelineMonths
   });
 
-  const timelineMonths = calc.timelineMonths < 36 ? 36 : 24;
-  const timelineLabel = calc.timelineMonths < 36 ? "Use 36 months" : "Try 24 months";
+  const alternateTimelineMonths = calc.timelineMonths < 36 ? 36 : 24;
+  const timelineLabel = calc.timelineMonths < 36 ? "Use more time" : "Faster timeline";
 
-  const adjustedTimelineMonthly =
+  const timelineMonthly =
     roundUpTo(
       Math.max(
         (calc.fiveXBase + calc.infrastructureCost - calc.startingContribution) /
-          timelineMonths,
+          alternateTimelineMonths,
         1
       ),
       25
@@ -438,53 +425,53 @@ function buildCompareOptions(calc) {
     goalName: calc.goalName,
     price: calc.price,
     startingContribution: calc.startingContribution,
-    monthlyContribution: adjustedTimelineMonthly,
-    timelineMonths
+    monthlyContribution: timelineMonthly,
+    timelineMonths: alternateTimelineMonths
   });
 
   return [
     {
-      label: "Current plan",
+      label: "Current path",
       calc: current,
       description: "This shows the numbers exactly as entered.",
       note:
         current.fiveXPlanBaseGap > 0
-          ? `The 5x plan-base gap is ${money(current.fiveXPlanBaseGap)}.`
-          : "This covers the 5x plan base after the shown infrastructure amount."
+          ? `The 5x planning gap is ${money(current.fiveXPlanBaseGap)}.`
+          : "This path covers the 5x planning base in this example."
     },
     {
-      label: "Cover 5x base",
-      calc: fiveXPath,
+      label: "Cover the 5x base",
+      calc: cover5xPath,
       description:
-        "This keeps the starting amount and adjusts the monthly amount to cover the 5x base after infrastructure.",
-      note: `Monthly amount changes to about ${money(fiveXPath.monthlyContribution)}.`
+        "Keeps the same starting amount and adjusts the monthly amount to cover the 5x planning base.",
+      note: `Monthly contribution changes to about ${money(cover5xPath.monthlyContribution)}.`
     },
     {
       label: "Stronger start",
       calc: strongerStart,
       description:
-        "This uses the suggested full-goal starting point and then calculates a matching monthly amount.",
-      note: `Starting amount changes to ${money(strongerStart.startingContribution)}.`
+        "Uses the suggested full-goal starting point, then calculates the matching monthly amount.",
+      note: `Starting contribution changes to ${money(strongerStart.startingContribution)}.`
     },
     {
       label: "Smaller first goal",
       calc: smallerGoal,
       description:
-        "This shows a smaller goal that better fits the current contribution path.",
+        "Shows a smaller first goal that better fits the current contribution path.",
       note: `Estimated first goal: ${money(smallerGoal.price)}.`
     },
     {
       label: "10x scenario",
       calc: tenXPath,
       description:
-        "This shows a more aggressive example. It is not a promise or expected outcome.",
-      note: `Monthly amount in this example: about ${money(tenXPath.monthlyContribution)}.`
+        "Shows a more aggressive planning scenario. It explains the math without promising an outcome.",
+      note: `Monthly contribution in this scenario: about ${money(tenXPath.monthlyContribution)}.`
     },
     {
       label: timelineLabel,
       calc: timelineOption,
       description:
-        "This shows how changing the timeline changes the monthly pressure.",
+        "Shows how the monthly amount changes when the timeline changes.",
       note:
         `${timelineOption.timelineMonths}-month version at about ${money(timelineOption.monthlyContribution)} per month.`
     }
@@ -518,6 +505,7 @@ function renderCompareOptions(calc, targetId) {
       <div><span>Start</span><strong>${money(option.calc.startingContribution)}</strong></div>
       <div><span>Monthly</span><strong>${money(option.calc.monthlyContribution)}</strong></div>
       <div><span>Timeline</span><strong>${option.calc.timelineMonths} mo</strong></div>
+      <div><span>Infrastructure</span><strong>${money(option.calc.infrastructureCost)}</strong></div>
       <div><span>Plan base after infrastructure</span><strong>${money(option.calc.availablePlanBaseAfterInfrastructure)}</strong></div>
       <div><span>5x gap</span><strong>${money(option.calc.fiveXPlanBaseGap)}</strong></div>
     `;
@@ -605,17 +593,17 @@ function buildCopyText() {
     `Monthly Contribution: ${money(calc.monthlyContribution)}`,
     `Total Contributions: ${money(calc.directTotal)}`,
     `Suggested Infrastructure: ${calc.suggestedTier.fullName}`,
-    `Infrastructure Cost Shown: ${money(calc.infrastructureCost)}`,
+    `Infrastructure Cost: ${money(calc.infrastructureCost)}`,
     `Plan Base After Infrastructure: ${money(calc.availablePlanBaseAfterInfrastructure)}`,
-    `5x Plan Base: ${money(calc.fiveXBase)}`,
+    `5x Scenario Base: ${money(calc.fiveXBase)}`,
     `5x Gap: ${money(calc.fiveXPlanBaseGap)}`,
-    `10x Plan Base: ${money(calc.tenXBase)}`,
+    `10x Scenario Base: ${money(calc.tenXBase)}`,
     "",
     "Plain-English Summary:",
     buildPlainEnglish(calc),
     "",
-    "Disclaimer:",
-    "This planning example does not promise returns, profit, appreciation, liquidity, approval, financing, payment approval, asset purchase, or ownership."
+    "Clear Expectations:",
+    "This planner does not promise returns, profit, appreciation, liquidity, approval, financing, payment approval, asset purchase, or ownership."
   ].join("\n");
 }
 
@@ -664,16 +652,16 @@ function renderRoadmapPage() {
     `Choose the goal: ${calc.goalName}. The price is ${money(calc.price)}. This gives the plan a clear target.`;
 
   $("stageTwoText").textContent =
-    `Start with ${money(calc.startingContribution)} and add ${money(calc.monthlyContribution)} per month. Over ${calc.timelineMonths} months, your total planned contribution is ${money(calc.directTotal)}.`;
+    `Start with ${money(calc.startingContribution)} and add ${money(calc.monthlyContribution)} per month. Over ${calc.timelineMonths} months, your total contributions are ${money(calc.directTotal)}.`;
 
   $("stageThreeText").textContent =
-    `The suggested infrastructure tier is ${calc.suggestedTier.fullName}. The shown infrastructure amount is ${money(calc.infrastructureCost)}. After that amount, about ${money(calc.availablePlanBaseAfterInfrastructure)} supports the plan base.`;
+    `The suggested infrastructure path is ${calc.suggestedTier.fullName}. The ${money(calc.infrastructureCost)} infrastructure amount is handled first. After that, about ${money(calc.availablePlanBaseAfterInfrastructure)} supports the planning base.`;
 
   $("stageFourText").textContent =
-    `The 5x plan base is ${money(calc.fiveXBase)}. Your current 5x gap is ${money(calc.fiveXPlanBaseGap)}. You can adjust the price, timeline, starting amount, or monthly amount to change this number.`;
+    `The 5x planning base is ${money(calc.fiveXBase)}. The current 5x gap is ${money(calc.fiveXPlanBaseGap)}. Changing the price, timeline, starting amount, or monthly amount changes this number.`;
 
   $("stageFiveText").textContent =
-    "A next step can begin with a small activation, simple onboarding, and a clear review of the plan. Start small if you want to build trust first.";
+    "A next step can be a small activation, simple onboarding, and a clear review of the pathway. Start small if you want to build trust first.";
 
   $("laymanExplanation").innerHTML = buildRoadmapExplanation(calc);
 
@@ -710,10 +698,10 @@ function buildRoadmapExplanation(calc) {
     <article>
       <h3>3. Infrastructure comes first</h3>
       <p>
-        The suggested infrastructure tier is <strong>${calc.suggestedTier.fullName}</strong>,
-        shown at <strong>${money(calc.infrastructureCost)}</strong>. In this sample
-        roadmap, that amount is handled first. After that, the remaining contribution
-        amount supports the plan base.
+        The suggested infrastructure path is <strong>${calc.suggestedTier.fullName}</strong>,
+        shown at <strong>${money(calc.infrastructureCost)}</strong>. In this planner,
+        that infrastructure amount is handled first. After that, the remaining
+        contribution amount supports the planning base.
       </p>
     </article>
 
@@ -721,8 +709,8 @@ function buildRoadmapExplanation(calc) {
       <h3>4. The 5x example</h3>
       <p>
         A 5x example means <strong>${money(calc.price)}</strong> divided by 5,
-        which equals <strong>${money(calc.fiveXBase)}</strong>. After the shown
-        infrastructure amount, your current plan base is about
+        which equals <strong>${money(calc.fiveXBase)}</strong>. After infrastructure,
+        the current planning base is about
         <strong>${money(calc.availablePlanBaseAfterInfrastructure)}</strong>.
         The 5x gap is about <strong>${money(calc.fiveXPlanBaseGap)}</strong>.
       </p>
@@ -732,9 +720,8 @@ function buildRoadmapExplanation(calc) {
       <h3>5. The 10x example</h3>
       <p>
         A 10x example means <strong>${money(calc.price)}</strong> divided by 10,
-        which equals <strong>${money(calc.tenXBase)}</strong>. This requires a
-        smaller plan base than the 5x example, but it is more aggressive. It is
-        not a promise.
+        which equals <strong>${money(calc.tenXBase)}</strong>. This requires a smaller
+        planning base than the 5x example, but it is more aggressive. It is not a promise.
       </p>
     </article>
 
@@ -743,8 +730,8 @@ function buildRoadmapExplanation(calc) {
       <p>
         More participants and more infrastructure may create more utility and
         more flexibility for the overall system. A small network has less room
-        to move. A larger network may create more possible paths. This explains
-        the idea, not a guaranteed result.
+        to move. A larger network may have more possible pathways. This explains
+        the concept, not a guaranteed result.
       </p>
     </article>
 
@@ -765,26 +752,21 @@ function renderGetStartedPage() {
   const calc = loadPlan();
 
   $("activationPlanSummary").textContent =
-    `Your saved plan is ${calc.goalName}, priced at ${money(calc.price)}, with a ${calc.timelineMonths}-month timeline. The suggested discussion tier is ${calc.suggestedTier.fullName}.`;
+    `Your saved sample plan is ${calc.goalName}, priced at ${money(calc.price)}, with a ${calc.timelineMonths}-month timeline. The suggested infrastructure path is ${calc.suggestedTier.fullName}.`;
 
   $("activationCreditText").textContent =
-    `Your $1 activation can be credited toward the plan connected to ${calc.goalName}.`;
+    `The $1 activation can be credited toward the plan connected to ${calc.goalName}.`;
 
   const button = $("activationButton");
 
   button.addEventListener("click", (event) => {
-    if (!CHECKOUT_URL) {
+    if (!ACTIVATION_URL) {
       event.preventDefault();
-      button.textContent = "Secure activation coming soon";
-      button.classList.add("button-disabled");
-      setTimeout(() => {
-        button.textContent = "Continue to Secure Activation";
-        button.classList.remove("button-disabled");
-      }, 2200);
+      alert("Secure activation is being prepared. Please contact Rousix to begin.");
       return;
     }
 
-    button.href = CHECKOUT_URL;
+    button.href = ACTIVATION_URL;
   });
 }
 
