@@ -5,19 +5,31 @@ A static GitHub Pages prototype that explains surplus-based planning in simple l
 ## Pages
 
 - `index.html` — landing page
-- `planner.html` — interactive planner
+- `planner.html` — interactive planner with compare options
 - `roadmap.html` — plain-English roadmap explanation
 - `get-started.html` — activation and onboarding concept
 - `styles.css` — design
 - `app.js` — calculations and local browser storage
 
-## Notes
+## What changed in this complete version
 
-This is a prototype only.
+- Removed Planning Pace.
+- Uses 24, 30, and 36 month timelines.
+- Defaults to 36 months.
+- Uses simple labels: Goal Type, Price, Starting Contribution, Monthly Contribution, Planning Timeline.
+- Adds a $1 activation placeholder.
+- Uses $5 starting contribution and $1 monthly contribution as absolute minimums.
+- Adds a goal-specific suggested starting point using `price / 60`.
+- Accounts for suggested infrastructure cost first.
+- Shows the remaining plan base after infrastructure.
+- Shows 5x and 10x hypothetical scenario math.
+- Adds Compare Options that update automatically.
 
-The payment section is not connected to a real payment processor. A live version should use a secure checkout link from a payment provider.
+## Payment note
 
-Do not collect credit card information directly on GitHub Pages.
+The payment section is not connected to a real payment processor. A live version should use a secure checkout link from a payment provider such as Stripe Payment Links or PayPal Payment Links.
+
+Do not collect credit-card information directly on a static GitHub Pages site.
 
 ## Disclaimer
 
