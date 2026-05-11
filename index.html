@@ -25,7 +25,7 @@
         </span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="planner.html">Start Planning</a>
         <a href="roadmap.html">View Roadmap</a>
         <a href="get-started.html">Get Started</a>
@@ -50,8 +50,9 @@
           <div class="important-card">
             <strong>Important:</strong>
             This is an educational prototype. It does not promise profit,
-            returns, approval, liquidity, appreciation, financing, or ownership.
-            It shows hypothetical planning scenarios only.
+            returns, approval, liquidity, appreciation, financing, payment
+            approval, or ownership. It shows hypothetical planning scenarios
+            only.
           </div>
 
           <div class="hero-actions">
@@ -69,7 +70,7 @@
                 <span>1</span>
                 <div>
                   <strong>Choose your goal</strong>
-                  <p>Vehicle, home, equipment, truck, or business asset.</p>
+                  <p>Vehicle, home, equipment, truck, workstation, or business asset.</p>
                 </div>
               </li>
 
@@ -85,7 +86,7 @@
                 <span>3</span>
                 <div>
                   <strong>Review the gap</strong>
-                  <p>See what remains after direct contributions.</p>
+                  <p>See what remains after infrastructure and direct contributions.</p>
                 </div>
               </li>
 
@@ -93,7 +94,7 @@
                 <span>4</span>
                 <div>
                   <strong>Compare options</strong>
-                  <p>Adjust the timeline, amount, goal, or tier.</p>
+                  <p>Adjust the timeline, amount, goal, or tier conversation.</p>
                 </div>
               </li>
 
@@ -114,12 +115,14 @@
       <div class="shell">
         <div class="section-heading">
           <p class="eyebrow">Plain-English concept</p>
+
           <h2>What this planner is trying to show</h2>
+
           <p>
-            The Rousix planner turns a large ownership goal into a smaller
-            planning base. It shows how much you can contribute directly, how
-            much remains, and what kind of infrastructure conversation may fit
-            the goal.
+            The planner turns a large ownership goal into a smaller planning
+            base. It shows how much you can contribute directly, what
+            infrastructure tier may fit the conversation, and what still needs
+            to be solved.
           </p>
         </div>
 
@@ -137,8 +140,8 @@
             <span>02</span>
             <h3>Goal pathway</h3>
             <p>
-              The planner shows a direct contribution path toward that goal
-              using simple numbers.
+              The planner turns the price into a simple contribution pathway
+              and shows the remaining gap.
             </p>
           </article>
 
@@ -146,8 +149,8 @@
             <span>03</span>
             <h3>Scenario view</h3>
             <p>
-              You can compare hypothetical 5x and 10x planning scenarios. These
-              are examples only, not promises.
+              Compare hypothetical 5x and 10x planning scenarios. These are
+              examples only, not promises.
             </p>
           </article>
 
@@ -184,12 +187,10 @@
   <footer class="site-footer">
     <div class="shell footer-inner">
       <p>© <span id="year"></span> Rousix Planner Prototype.</p>
-      <p>No visitor data is stored in this static demo.</p>
+      <p>No visitor data is stored on a server in this static demo.</p>
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
