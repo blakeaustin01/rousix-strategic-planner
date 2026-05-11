@@ -1,61 +1,42 @@
-# Rousix Strategic Ownership Planner
+# Rousix Goal Pathway Planner
 
-This is a static GitHub Pages prototype for explaining a simple Rousix strategic ownership planning flow.
+This is a static GitHub Pages prototype for a Rousix planning tool.
 
 ## What it does
 
 A visitor enters:
 
-- Goal Type
-- Goal Name
+- Goal type
+- Goal name
 - Price
-- Starting Contribution
-- Monthly Contribution
-- Planning Timeline
-- Infrastructure Selection
+- Starting contribution
+- Monthly contribution
+- Planning timeline
+- Illustration model
+- Infrastructure tier
 
-The planner generates:
+The planner shows:
 
-- direct contribution path
-- simple remaining gap
-- suggested Rousix infrastructure
-- infrastructure balance after starting contribution
-- cash-only path
-- 5x what-if example
-- 10x what-if example
-- 36-month strategic roadmap
-- mock $1 payment-method verification step
+- Direct-capital target
+- Suggested starting point
+- Suggested monthly path
+- Infrastructure suggestion
+- Infrastructure cost handling
+- Remaining goal-path gap
+- Plain-English summary
+- Compare options
+- Top-to-bottom roadmap
+- Copy summary
+- Print roadmap
+- Hosted payment link button placeholder
 
-## Important
+## Payment handling
 
-This prototype does not collect payments.
+This static site does not collect card data.
 
-The $1 step is a mock interface only. A real implementation would require a payment processor such as Stripe and a secure backend.
+For a live version, use a secure hosted checkout tool such as Stripe Payment Links or Stripe Checkout.
 
-## Disclaimer
+The `app.js` file contains this placeholder:
 
-This prototype is for education and marketing only.
-
-It does not provide financial, investment, tax, legal, credit, lending, mining, staking, or accounting advice.
-
-The 5x and 10x examples are hypothetical math examples only. They are not predictions, promises, guarantees, or expected returns.
-
-The planner does not guarantee:
-
-- profit
-- returns
-- liquidity
-- appreciation
-- mining output
-- staking output
-- financing approval
-- payment ability
-- asset purchase
-- ownership outcomes
-
-## Files
-
-- `index.html`
-- `styles.css`
-- `app.js`
-- `README.md`
+```javascript
+const STRIPE_START_LINK = "https://buy.stripe.com/REPLACE_WITH_YOUR_1_DOLLAR_VERIFICATION_LINK";
